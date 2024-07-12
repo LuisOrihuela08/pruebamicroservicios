@@ -1,0 +1,3 @@
+server:
+  port: ${PORT:8864}
+message: Configuracion de reserva en el servidor levantado!
