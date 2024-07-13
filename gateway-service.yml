@@ -1,0 +1,42 @@
+server:
+  port: ${PORT:8080}
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}  # Asegurar ID único
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: pago-service
+          uri: lb://pago-service
+          predicates:
+            - Path=/apipago/**
+        - id: reserva-service
+          uri: lb://reserva-service
+          predicates:
+            - Path=/apireserva/**
+        - id: rutas-service
+          uri: lb://rutas-service
+          predicates:
+            - Path=/apiruta/**
+        - id: usuario-service
+          uri: lb://usuario-service
+          predicates:
+            - Path=/apiusuario/**
+        - id: viajes-service
+          uri: lb://viajes-service
+          predicates:
+            - Path=/apiviaje/**
