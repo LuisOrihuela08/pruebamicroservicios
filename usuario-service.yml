@@ -11,6 +11,17 @@ spring:
     hibernate:
       ddl-auto: update
       database-platform: org.hibernate.dialect.MySQLDialect
+  application:
+    name: usuario-service
   cloud:
     config:
       uri: http://localhost.8860
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
