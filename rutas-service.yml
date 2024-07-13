@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8861}
+  port: ${PORT:${SERVER_PORT:0}}
 message: Configuracion de rutas en el servidor levantado!
 spring:
   datasource:
