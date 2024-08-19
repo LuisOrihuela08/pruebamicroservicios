@@ -28,18 +28,26 @@ spring:
           uri: lb://reserva-service
           predicates:
             - Path=/apireserva/**
+          filters:
+            - AuthenticationFilter
         - id: rutas-service
           uri: lb://rutas-service
           predicates:
             - Path=/apiruta/**
+          filters:
+            - AuthenticationFilter
         - id: usuario-service
           uri: lb://usuario-service
           predicates:
             - Path=/apiusuario/**
+          filters:
+            - AuthenticationFilter
         - id: viajes-service
           uri: lb://viajes-service
           predicates:
             - Path=/apiviaje/**
+          filters:
+            - AuthenticationFilter
         - id: security-service
           uri: lb://security-service
           predicates:
