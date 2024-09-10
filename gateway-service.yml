@@ -24,6 +24,8 @@ spring:
           uri: lb://pago-service
           predicates:
             - Path=/apipago/**
+          filters:
+            - AuthenticationFilter
         - id: reserva-service
           uri: lb://reserva-service
           predicates:
